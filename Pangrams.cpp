@@ -33,5 +33,23 @@
 using namespace std;
 
 int main(){
+	string sentence;
+	cg(sentence);
+	int len = l(sentence);
+	long int product = 1;
+	int alphabets[26];
+	fill(alphabets + 0, alphabets + 26, 0);
+	f(i, len){
+		if(sentence[i] >= 'A' && sentence[i] <= 'Z')
+			alphabets[sentence[i] - 'A']++;
+		else if(sentence[i] >= 'a' && sentence[i] <= 'z')
+			alphabets[sentence[i] - 'a']++;
+	}
+	f(i, 26)
+		product *= alphabets[i];
+	if(product > 0)
+		co("pangram");
+	else
+		co("not pangram");
 	return 0;
 }

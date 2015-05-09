@@ -33,5 +33,36 @@
 using namespace std;
 
 int main(){
+	string word;
+	c(word);
+	auto flag = 1;
+	auto len = l(word);
+	int alphabets[26];
+	auto count = 0;
+	fill(alphabets + 0, alphabets + 26, 0);
+	f(i, len)
+		alphabets[word[i] - 'a']++;
+	if(len % 2 == 0){
+		f(i, 26){
+			if(alphabets[i] % 2 != 0){
+				flag = -1;
+				break;
+			}
+		}
+	}
+	else{
+		f(i, 26){
+			if(count > 1){
+				flag = -1;
+				break;
+			}
+			if(alphabets[i] % 2 != 0)
+				count++;
+		}
+	}
+	if(flag == 1)
+		co("YES");
+	else
+		co("NO");
 	return 0;
 }

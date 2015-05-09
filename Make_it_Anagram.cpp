@@ -33,5 +33,21 @@
 using namespace std;
 
 int main(){
+	string word_1;
+	string word_2;
+	int alphabets[26];
+	c(word_1);
+    c(word_2);
+    fill(alphabets + 0, alphabets + 26, 0);
+	int len_1 = l(word_1);
+	int len_2 = l(word_2);
+	auto count = 0;
+	f(i, len_1)
+		alphabets[word_1[i] - 'a']++;
+	f(i, len_2)	
+		alphabets[word_2[i] - 'a']--;
+	f(i, 26)
+		count += abs(alphabets[i]);
+	co(count);	
 	return 0;
 }

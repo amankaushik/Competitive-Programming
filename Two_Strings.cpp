@@ -33,5 +33,35 @@
 using namespace std;
 
 int main(){
+	auto tests = 0;
+	s(tests);
+	string a;
+	string b;
+	bool alphabets_a[26];
+	bool alphabets_b[26];
+	w(tests){
+		fill(alphabets_a + 0, alphabets_a + 26, false);
+		fill(alphabets_a + 0, alphabets_a + 26, false);
+		c(a);
+		c(b);
+		auto len_a = l(a);
+		auto len_b = l(b);
+		auto flag = -1;
+		f(i, 26)
+			alphabets_a[a[i] - 'a'] = true;
+		f(i, 26)
+			alphabets_b[b[i] - 'a'] = true;
+		f(i, 26){
+			if(alphabets_a[i] == true && alphabets_b[i] == true){
+				flag = 1;
+				break;
+			}
+		}
+		if(flag == 1)
+			co("YES");
+		else
+			co("NO");	
+	}
+	
 	return 0;
 }

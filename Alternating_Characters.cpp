@@ -33,5 +33,18 @@
 using namespace std;
 
 int main(){
+	auto tests = 1;
+	s(tests);
+	string word("");
+	w(tests){
+		c(word);
+		auto count = 0;
+		int len = l(word);
+		for(auto i = 0; i < len - 1; i++){
+			if(word[i] == word[i + 1])
+				count++;
+		}
+		co(count);
+	}
 	return 0;
 }
