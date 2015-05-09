@@ -31,5 +31,34 @@
 using namespace std;
 
 int main(){
+	int tests;
+	s(tests);
+	string word;
+	mp_wf my_map;
+	int len;
+	int count;
+	string temp("");
+	w(tests){
+		c(word);
+		my_map.clear();
+		count = 0;
+		len = l(word);
+		f(i, len){
+			for(int j = 1; i + j - 1 < len; j++){
+				temp = word.substr(i, j);
+				sort(temp.begin(), temp.end());
+				if(my_map.count(temp) > 0)
+					my_map[temp]++;
+				else
+					my_map[temp] = 1;
+			}
+		}
+		for(mp_wf::iterator itr = my_map.begin(); itr != my_map.end(); itr++){
+			if(itr->second > 1){
+				count += (itr->second) * (itr->second - 1) / 2;
+			}
+		}
+		co(count);
+	}
 	return 0;
 }
