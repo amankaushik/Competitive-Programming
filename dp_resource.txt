@@ -1,0 +1,52 @@
+Books:
+1. Skiena.-.TheAlgorithmDesignManual
+2. Algorithm_Design - kaporisa
+
+Notes :
+http://courses.csail.mit.edu/iap/interview/materials.php
+
+Tutorial:
+
+1. http://20bits.com/article/introduction-to-dynamic-programming
+2. https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/
+
+Types of dynamic programming problems:
+
+Problems which simply ask you to come up with the formula of calculating the answer from the subproblems. These are the most common ones and probably the ones you want to practice on (95+% of DP problems are of this type). On TopCoder, they are usually ranked as Div1-500 and easier. On other online judges just look for the problems with many successfull solutions.
+The number of dimensions of the array doesn't really tell much about the problem difficulty, so don't judge based on that. It only needs a little more implementation.
+The hardest problems in this category require you to use bitmasks. For example:
+http://community.topcoder.com/stat?c=problem_statement&pm=11379&rd=14437&rm=308640&cr=22685656
+Here is a very nice tutorial on bit manipulation techniques:
+http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=bitManipulation
+
+Problems which require you to come up with efficient linear recurrence, putting the recurrence into the matrix and calculate the N-th power of the matrix. Examples are: 
+http://www.spoj.pl/problems/XORROUND/
+http://www.spoj.pl/problems/TRKNIGHT/
+http://www.spoj.pl/problems/RP/
+
+Problems which require you to eliminate the inner cycle in the algorithm. For more information you can look at Knuth's speedup of calculating the optimal binary search tree
+http://dl.acm.org/citation.cfm?id=1644032
+or
+http://community.topcoder.com/tc?module=HSProblemStatement&pm=8712&rd=12046
+
+Problems which require you to effectively calculate and operate on the convex hull of the optimal solutions. For a nice problem with a solution, look at the problem Harbingers from CEOI 2009. Other examples are:
+http://www.spoj.pl/problems/MKPAIRS/
+http://www.spoj.pl/problems/NKLEAVES/
+http://www.spoj.pl/OI/problems/CEOI09HA/
+
+Problems Archive:
+
+MIT:
+http://people.cs.clemson.edu/~bcdean/dp_practice/
+
+TopCoder:
+http://community.topcoder.com/tc?module=ProblemArchive&sr=&er=&sc=&sd=&class=&cat=Dynamic+Programming&div1l=&div2l=&mind1s=&mind2s=&maxd1s=&maxd2s=&wr=
+
+Timus Online Judge:
+http://acm.timus.ru/problemset.aspx?space=1&tag=dynprog
+
+Codeforces:
+http://codeforces.com/problemset
+
+Spoj:
+http://apps.topcoder.com/forums/?module=Thread&threadID=674592&start=0&mc=7#1237445

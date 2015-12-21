@@ -1,4 +1,12 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstdio>
+#include <climits>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <stack>
+#include <cmath>
+#include <map>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -19,19 +27,28 @@
 #define ss(n)                       scanf("%s",n)
 #define sl(n)                       scanf("%lld",&n)
 #define sf(n)                       scanf("%lf",&n)
+#define sfi(n) 						scanf("%d", &n)
 
-#define pb(n)						push_back(n)
-
-#define vi							vector<int>
-#define si							stack<int>
-#define mp 							map<int, int>
-#define mp_cf						map<char, int> // char frequency map
-#define mp_wf						map<string , int> // word frequency map
 #define l(n)						n.length()
 #define f(i, n)						for(int i = 0; i < n; i++)
+
+#define pb(n)						push_back(n)
+#define mp(x, y)					make_pair(x, y)
+
+typedef map<int, int>				mpi
+typedef map<char, int>				mpc
+typedef map<string, int>       		mpw
+typedef stack<int>					si
+typedef pair<int, int> 				ii
+typedef vector<ii>					vii
+typedef vector<int>					vi
+typedef long long 					ll
+typedef long int 					li
 
 using namespace std;
 
 int main(){
+	freopen( "input.in", "r", stdin );
+	freopen( "output.out", "w", stdout );
 	return 0;
 }
