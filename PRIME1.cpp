@@ -46,6 +46,11 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+const int MAX_DIFF = 100000;
+const int INTERVAL_SIZE = 1000;
+const int INTERVAL_RANGE = 2 * INTERVAL_SIZE;
+const int FIRST_PRIME = 3;
+
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
@@ -55,8 +60,35 @@ int main(){
 		li m;
 		li n;
 		scanf("%ld%ld", &m, &n);
-		int diff = (n - m) >= 0 ? (n - m) : (- 1) * (n - m);
-		cout<<m<<" "<<n<<" "<<diff;
+		//li base_m = (li)pow((double)m, 0.5);
+		if(n < 2)
+			printf("EMPTYLINE");
+		else if(n == 2)
+			printf("%d\n\n", 2);
+		else {
+			int diff = (n - m) >= 0 ? (n - m) : (- 1) * (n - m);
+			vi primes;
+			primes.pb(2);
+			long start = FIRST_PRIME;
+			long end = FIRST_PRIME + INTERVAL_RANGE;
+			do {
+				if(n < (end))
+					end = n;
+				long int interval_arr[INTERVAL_SIZE];
+				long int offset = 0;
+				for(int i = 0; i <= INTERVAL_SIZE; i++) {
+					interval_arr[i] = start + offset;
+					offset += 2;
+				}
+				/*
+				for(int i = 0; i <= INTERVAL_SIZE; i++)
+					printf("%ld ", interval_arr[i]);
+				*/
+				// Interval created .. check for primes and mark non primes
+				start = end + 1;
+				end = start + INTERVAL_RANGE;
+			}while(n > start);
+		}
 	}
 	return 0;
 }
