@@ -46,49 +46,71 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
-const int MAX_DIFF = 100000;
-const int INTERVAL_SIZE = 1000;
-const int INTERVAL_RANGE = 2 * INTERVAL_SIZE;
 const int FIRST_PRIME = 3;
 
+void getBasePrimes(li m, li n, vector<li> &primes) {
+	int sqrtEnd = (int)sqrt((double)n);
+	mpi basePrimes;
+
+	basePrimes[0] = -1;
+	basePrimes[1] = -1;
+	basePrimes[2] = 1;
+	
+	for(int i = FIRST_PRIME; i <= sqrtEnd; i += 2)
+		basePrimes[i] = 1;
+	
+	for(auto &kv : basePrimes) {
+		if(kv.second == 1) {
+			for(int j = kv.first * kv.first; j <= sqrtEnd; j += (2 * kv.first))
+				basePrimes[j] = -1;
+		}
+	}
+	for(auto &kv : basePrimes) {
+		if(kv.second == 1)
+			primes.pb(kv.first);
+	}
+}
+
+void getIntervalPrimes(li m, li n, vector<li> &primes){
+	map<li, int> allPrimes;
+	for(li i = m; i <= n; i++)
+		allPrimes[i] = 1;
+	allPrimes[1] = -1;
+	for(auto a : primes) {
+		li base = m / a;
+		li nearest = a * base;
+		for(li i = nearest; i <= n; i += a) {
+			allPrimes[i] = -1;
+		}
+	}
+	for(auto &kv : allPrimes) {
+		if(kv.second == 1)
+			primes.pb(kv.first);
+	}
+}
+
 int main(){
-	freopen( "input.in", "r", stdin );
-	freopen( "output.out", "w", stdout );
+	//freopen( "input.in", "r", stdin );
+	//freopen( "output.out", "w", stdout );
 	int test;
 	s(test);
 	w(test) {
 		li m;
 		li n;
 		scanf("%ld%ld", &m, &n);
-		//li base_m = (li)pow((double)m, 0.5);
-		if(n < 2)
-			printf("EMPTYLINE");
+		if(n == 1)
+			printf("\n");
 		else if(n == 2)
-			printf("%d\n\n", 2);
+			printf("2\n");
 		else {
-			int diff = (n - m) >= 0 ? (n - m) : (- 1) * (n - m);
-			vi primes;
-			primes.pb(2);
-			long start = FIRST_PRIME;
-			long end = FIRST_PRIME + INTERVAL_RANGE;
-			do {
-				if(n < (end))
-					end = n;
-				long int interval_arr[INTERVAL_SIZE];
-				long int offset = 0;
-				for(int i = 0; i <= INTERVAL_SIZE; i++) {
-					interval_arr[i] = start + offset;
-					offset += 2;
-				}
-				/*
-				for(int i = 0; i <= INTERVAL_SIZE; i++)
-					printf("%ld ", interval_arr[i]);
-				*/
-				// Interval created .. check for primes and mark non primes
-				start = end + 1;
-				end = start + INTERVAL_RANGE;
-			}while(n > start);
+			vector<li> primes;
+			getBasePrimes(m, n, primes);
+			getIntervalPrimes(m, n, primes);
+			for(auto a : primes)
+				if(a >= m)
+					cout<<a<<"\n";
 		}
+		cout<<"\n";
 	}
 	return 0;
 }
