@@ -27,7 +27,7 @@
 #define s(n) 						scanf("%d", &n)
 #define p(n)						printf("%d",n)
 #define sc(n)                       scanf("%c",&n)
-
+#define emptyLine					printf("\n")
 #define l(n)						n.length()
 #define f(i, n)						for(int i = 0; i < n; i++)
 
