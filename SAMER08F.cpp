@@ -47,17 +47,18 @@ typedef long long 					ll;
 typedef long int 					li;
 
 int main(){
-	freopen( "input.in", "r", stdin );
-	freopen( "output.out", "w", stdout );
 	int n;
 	while(1) {
 		s(n);
 		if(n == 0)
 			break;
 		else {
-			p(n);
-			emptyLine;
+			int sum = 0;
+			for(int i = n; i >= 1; i--)
+				sum += (i * i);
+			p(sum);
 		}
+		emptyLine;
 	}
 	return 0;
 }
