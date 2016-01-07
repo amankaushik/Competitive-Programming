@@ -49,5 +49,21 @@ typedef long int 					li;
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+	while(1) {
+		int N;
+		s(N);
+		if(N == -1)
+			break;
+		int packetSize[N];
+		f(i, N) 
+			s(packetSize[i]);
+		p(N);
+		emptyLine;
+		f(i, N)
+			p(packetSize[i]);
+		emptyLine;
+		emptyLine;	
+
+	}
 	return 0;
 }
