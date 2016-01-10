@@ -7,8 +7,6 @@
 #include <stack>
 #include <cmath>
 #include <map>
-#include <cstdint>
-#include <bitset>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -51,5 +49,23 @@ typedef long int 					li;
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+	int test;
+	s(test);
+	w(test){
+		int N;
+		s(N);
+		int men[N];
+		f(i, N)
+			s(men[i]);
+		int women[N];
+		f(i, N)
+			s(women[i]);
+		sort(men, men + N);
+		sort(women, women + N);
+		int sum = 0;
+		f(i, N)
+			sum += (men[i] * women[i]);
+		cout<<sum<<"\n";
+	}
 	return 0;
 }

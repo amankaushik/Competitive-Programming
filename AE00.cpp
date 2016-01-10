@@ -7,8 +7,7 @@
 #include <stack>
 #include <cmath>
 #include <map>
-#include <cstdint>
-#include <bitset>
+#include <set>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -51,5 +50,16 @@ typedef long int 					li;
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+	vi factors;
+	int N;
+	s(N);
+	long int total = 0;
+	for(int i = 1; i <= N; i++) {
+		for(int j = i; j <= N; j++) {
+			if(i * j <= N)
+				total++;
+		}
+	}
+	printf("%ld", total);
 	return 0;
 }

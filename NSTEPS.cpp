@@ -7,8 +7,6 @@
 #include <stack>
 #include <cmath>
 #include <map>
-#include <cstdint>
-#include <bitset>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -48,8 +46,40 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+int isEven(int x) {
+	while(x > 0)
+		x -= 2;
+	if(x == 0)
+		return x;
+	else
+		return -1;
+}
+
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+	int test;
+	s(test);
+	w(test) {
+		int x, y;
+		s(x);
+		s(y);
+		if((x % 2 == 0) && (y % 2 == 0)) {
+			if((x == y) || (x - y) == 2) {
+				printf("%d\n", (x + y));
+			}
+			else
+				printf("No Number\n");
+		}
+		else if(x % 2 != 0 && y % 2 != 0) {
+			if((x == y) || (x - y) == 2) {
+				printf("%d\n", (x + y) - 1);
+			}
+			else
+				printf("No Number\n");	
+		}
+		else
+			printf("No Number\n");
+	}
 	return 0;
 }

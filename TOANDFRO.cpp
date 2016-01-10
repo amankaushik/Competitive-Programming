@@ -7,8 +7,6 @@
 #include <stack>
 #include <cmath>
 #include <map>
-#include <cstdint>
-#include <bitset>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -47,9 +45,44 @@ typedef vector<ii>					vii;
 typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
-
 int main(){
 	freopen( "input.in", "r", stdin );
-	freopen( "output.out", "w", stdout );
+	//freopen( "output.out", "w", stdout );
+	while(1) {
+		int numCol;
+		s(numCol);
+		if(numCol == 0)
+			break;
+		string cipherText;
+		string plainText;
+		cin>>cipherText;
+		int len = cipherText.length();
+		plainText.resize(len);
+		int offset = (2 * numCol);
+		int numRow = len / numCol;
+		int k = 0;
+		bool flip = false;
+		int split = 0;
+		int changeI = 0;
+		for(int i = 0; i < numCol; i++) {
+			changeI = i;
+			flip = false;
+			for(int j = 0; j < numRow; j++) {
+				split = offset - i - 1;
+				if(flip){
+					plainText[k] = cipherText[changeI + split - i];
+					changeI += (offset);
+					flip = !flip;
+				}
+				else {
+					plainText[k] = cipherText[changeI + (offset - split) - (i + 1)];
+					flip = !flip;
+				}
+				k++;
+			}
+		}
+		cout<<plainText;
+		emptyLine;
+	}
 	return 0;
 }

@@ -55,15 +55,25 @@ int main(){
 		if(N == -1)
 			break;
 		int packetSize[N];
-		f(i, N) 
+		int total = 0;
+		f(i, N) {
 			s(packetSize[i]);
-		p(N);
+			total += packetSize[i];
+		}
+		if(total % N != 0)
+			p(-1);
+		else {
+			int equalSize = total / N;
+			//int maxChange = INT_MAX;
+			int change = 0;
+			f(i, N) {
+				if(packetSize[i] < equalSize)
+					//maxChange = min(maxChange, (packetSize[i] - equalSize));
+					change += (equalSize - packetSize[i]);
+			}
+			p(change);
+		}
 		emptyLine;
-		f(i, N)
-			p(packetSize[i]);
-		emptyLine;
-		emptyLine;	
-
 	}
 	return 0;
 }

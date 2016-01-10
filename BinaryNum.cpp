@@ -51,5 +51,23 @@ typedef long int 					li;
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+	int test;
+	s(test);
+	w(test) {
+		li decimal;
+		scanf("%ld", &decimal);
+		string binary = bitset<31>(decimal).to_string();
+		int count = 0;
+		f(i, 8) {
+			if(binary[i] != '0')
+				break;
+			count += 1;
+		}
+		binary.erase(0, count);
+		if(!binary.empty())
+			cout<<binary<<"\n";
+		else
+			cout<<"0\n"
+	}
 	return 0;
 }
