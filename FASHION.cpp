@@ -49,6 +49,7 @@ typedef long int 					li;
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
+<<<<<<< HEAD
 	int test;
 	s(test);
 	w(test){
@@ -67,5 +68,7 @@ int main(){
 			sum += (men[i] * women[i]);
 		cout<<sum<<"\n";
 	}
+=======
+>>>>>>> 4f5c3fea9e65073b7cef1565ca6a4d4d3d46361e
 	return 0;
 }
