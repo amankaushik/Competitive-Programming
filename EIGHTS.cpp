@@ -1,4 +1,4 @@
-#include <iostream>
+l#include <iostream>
 #include <cstdio>
 #include <climits>
 #include <algorithm>
@@ -7,6 +7,8 @@
 #include <stack>
 #include <cmath>
 #include <map>
+#include <cstdint>
+#include <bitset>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -51,21 +53,13 @@ int main(){
 	freopen( "output.out", "w", stdout );
 	int test;
 	s(test);
-	w(test){
-		int N;
-		s(N);
-		int men[N];
-		f(i, N)
-			s(men[i]);
-		int women[N];
-		f(i, N)
-			s(women[i]);
-		sort(men, men + N);
-		sort(women, women + N);
-		int sum = 0;
-		f(i, N)
-			sum += (men[i] * women[i]);
-		cout<<sum<<"\n";
+	const int compare = 888;
+	const int modulo = 1000;
+	const int cube = 3;
+	w(test) {
+		ll k;
+		scanf("%lld", &k);
+		printf("%lld\n", 192 + (k-1) * 250);
 	}
 	return 0;
 }

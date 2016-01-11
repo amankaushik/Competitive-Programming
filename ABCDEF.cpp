@@ -7,6 +7,8 @@
 #include <stack>
 #include <cmath>
 #include <map>
+#include <cstdint>
+#include <bitset>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -36,6 +38,21 @@
 
 using namespace std;
 
+class sixTuple{
+public:
+	int a, b, c, d, e, f;
+	sixTuple(int, int, int, int, int, int);
+};
+
+sixTuple::sixTuple(int a = 1, int b = 1, int c = 1, int d = 1, int e = 1, int f = 1){
+	a = a;
+	b = b;
+	c = c;
+	d = d; 
+	e = e;
+	f = f;
+}
+
 typedef map<int, int>				mpi;
 typedef map<char, int>				mpc;
 typedef map<string, int>       		mpw;
@@ -46,26 +63,18 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+bool verifyMembership(sixTuple tuple) {
+	return false;
+}
+
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
-	int test;
-	s(test);
-	w(test){
-		int N;
-		s(N);
-		int men[N];
-		f(i, N)
-			s(men[i]);
-		int women[N];
-		f(i, N)
-			s(women[i]);
-		sort(men, men + N);
-		sort(women, women + N);
-		int sum = 0;
-		f(i, N)
-			sum += (men[i] * women[i]);
-		cout<<sum<<"\n";
-	}
+	int N;
+	s(N);
+	int elements[N];
+	f(i, N)
+		s(elements[i]);
+
 	return 0;
 }
