@@ -9,6 +9,7 @@
 #include <map>
 #include <cstdint>
 #include <bitset>
+#include <unordered_map>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -40,18 +41,8 @@ using namespace std;
 
 class sixTuple{
 public:
-	int a, b, c, d, e, f;
-	sixTuple(int, int, int, int, int, int);
+	int a, b, c;
 };
-
-sixTuple::sixTuple(int a = 1, int b = 1, int c = 1, int d = 1, int e = 1, int f = 1){
-	a = a;
-	b = b;
-	c = c;
-	d = d; 
-	e = e;
-	f = f;
-}
 
 typedef map<int, int>				mpi;
 typedef map<char, int>				mpc;
@@ -63,10 +54,11 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
-bool verifyMembership(sixTuple tuple) {
-	return false;
+void printMap(unordered_map<int, int> &valMap) {
+	for(auto &kv: valMap)
+		cout<<kv.first<<" -> "<<kv.second<<"\n";
+		//cout<<kv.first<<" : "<<kv.second.a<<" "<<kv.second.b<<" "<<kv.second.c<<" "<<kv.second.d<<" "<<kv.second.e<<" "<<kv.second.f<<"\n";
 }
-
 int main(){
 	freopen( "input.in", "r", stdin );
 	freopen( "output.out", "w", stdout );
@@ -75,6 +67,45 @@ int main(){
 	int elements[N];
 	f(i, N)
 		s(elements[i]);
-
+	sort(elements + 0, elements + N);
+	//int valVector[1100000] = {0};
+	unordered_map<int ,int> valMap;
+	unordered_multimap<int ,int> valMMap;
+	//int len = 0;
+	f(i, N) {
+		f(j, N) {
+			f(k, N) {
+				int val = (elements[i] * elements[j]) + elements[k];
+				if(valMap[val])
+					valMap[val]++;
+				else
+					valMap[val] = 1;
+			}
+		}
+	}
+	int RHS {0};
+	int count {0};
+	for(auto &kv: valMap) {
+		if(kv.first != 2)
+			continue;
+		f(i, N) {
+			if(elements[i]) {
+				f(j, N) {
+					if(kv.first % elements[i] == 0){
+						RHS = kv.first / elements[i];
+						RHS -=  elements[j];
+						if(binary_search(elements + 0, elements + N, RHS)) {
+							//cout<<"binary_search true\n";
+							//cout<<"I: "<<i<<" J: "<<j<<"\n";
+							//cout<<"D: "<<elements[i]<<" E: "<<elements[j]<<" F: "<<RHS<<"\n";
+							count +=                                           
+							count++;
+						}
+					}
+				}	
+			}
+		}
+	}
+	printf("%d\n", count);
 	return 0;
 }
