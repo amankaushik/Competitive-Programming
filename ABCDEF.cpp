@@ -7,6 +7,9 @@
 #include <stack>
 #include <cmath>
 #include <map>
+#include <cstdint>
+#include <bitset>
+#include <unordered_map>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -46,26 +49,53 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+void printMap(unordered_map<int, int> &valMap) {
+	for(auto &kv: valMap)
+		cout<<kv.first<<" -> "<<kv.second<<"\n";
+}
 int main(){
-	freopen( "input.in", "r", stdin );
-	freopen( "output.out", "w", stdout );
-	int test;
-	s(test);
-	w(test){
-		int N;
-		s(N);
-		int men[N];
-		f(i, N)
-			s(men[i]);
-		int women[N];
-		f(i, N)
-			s(women[i]);
-		sort(men, men + N);
-		sort(women, women + N);
-		int sum = 0;
-		f(i, N)
-			sum += (men[i] * women[i]);
-		cout<<sum<<"\n";
+	freopen( "aux/input.in", "r", stdin );
+	freopen( "aux/output.out", "w", stdout );
+	int N;
+	s(N);
+	int elements[N];
+	unordered_map<int ,int> eleMap;
+
+	f(i, N)
+		s(elements[i]);
+	f(i, N) {
+		eleMap[elements[i]] = elements[i];
 	}
+	sort(elements + 0, elements + N);
+	unordered_map<int ,int> valMap;
+	
+	f(i, N) {
+		f(j, N) {
+			f(k, N) {
+				int val = (elements[i] * elements[j]) + elements[k];
+				if(valMap[val])
+					valMap[val]++;
+				else
+					valMap[val] = 1;
+			}
+		}
+	}
+	int RHS {0};
+	int count {0};
+	for(auto &kv: valMap) {
+		int subCount = 0;
+		f(i, N) {
+			if(elements[i]) {
+				f(j, N) {
+					if(kv.first % elements[i] == 0){
+						if(eleMap.find(kv.first / elements[i] - elements[j]) != eleMap.end())
+							subCount++;
+					}
+				}	
+			}
+		}
+		count += subCount * kv.second;
+	}
+	printf("%d\n", count);
 	return 0;
 }
