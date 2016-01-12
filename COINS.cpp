@@ -48,26 +48,25 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+map <long long int , long long int> dp;
+ 
+long long int calcTotal(long long int n) 
+{
+  if (n == 0) 
+  	return 0; 
+  long long int aux = dp[n];
+ 
+  if (aux == 0) {
+    aux = maX( n , calcTotal(n / 2) + calcTotal(n / 3) + calcTotal(n / 4) );
+    dp[n] = aux;
+  }
+  return aux;
+}
+
 int main(){
-	freopen( "input.in", "r", stdin );
-	freopen( "output.out", "w", stdout );
-	long long int test;
-	scanf("%lld", &test);
-	string dummy;
-	w(test) {
-		long long int N;
-		getline(cin, dummy);
-		scanf("%lld", &N);
-		long long int candy[N];
-		for(long long int i = 0; i < N; i++)
-			scanf("%lld", &candy[i]);
-		long long int sum = 0;
-		for(long long int i = 0; i < N; i++)
-			sum = (sum + candy[i]) % N;
-		if(sum == 0)
-			cout<<"YES\n";
-		else
-			cout<<"NO\n";
+	long long int N;
+	while((scanf("%lld", &N)) == 1) {
+		printf("%lld\n", calcTotal(N));
 	}
 	return 0;
 }
