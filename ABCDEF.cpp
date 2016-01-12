@@ -49,52 +49,40 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
-void printMap(unordered_map<int, int> &valMap) {
-	for(auto &kv: valMap)
-		cout<<kv.first<<" -> "<<kv.second<<"\n";
-}
 int main(){
 	freopen( "aux/input.in", "r", stdin );
 	freopen( "aux/output.out", "w", stdout );
 	int N;
 	s(N);
 	int elements[N];
-	unordered_map<int ,int> eleMap;
-
-	f(i, N)
+	f(i, N){
 		s(elements[i]);
-	f(i, N) {
-		eleMap[elements[i]] = elements[i];
 	}
-	sort(elements + 0, elements + N);
-	unordered_map<int ,int> valMap;
-	
+	vi LHS;
+	vi RHS;
 	f(i, N) {
 		f(j, N) {
-			f(k, N) {
-				int val = (elements[i] * elements[j]) + elements[k];
-				if(valMap[val])
-					valMap[val]++;
-				else
-					valMap[val] = 1;
-			}
+			int val = (elements[i] * elements[j]);
+			f(k, N)
+				LHS.pb(val + elements[k]);
 		}
 	}
-	int RHS {0};
-	int count {0};
-	for(auto &kv: valMap) {
-		int subCount = 0;
-		f(i, N) {
-			if(elements[i]) {
-				f(j, N) {
-					if(kv.first % elements[i] == 0){
-						if(eleMap.find(kv.first / elements[i] - elements[j]) != eleMap.end())
-							subCount++;
-					}
-				}	
-			}
+	sort(LHS.begin(), LHS.end());
+	f(i, N) {
+		f(j, N) {
+			int val = (elements[i] + elements[j]);
+			f(k, N)
+				if(elements[k])
+					RHS.pb(val * elements[k]);
 		}
-		count += subCount * kv.second;
+	}
+	sort(RHS.begin(), RHS.end());
+	int size = LHS.size();
+	int low, high ,count = 0;
+	f(i, size) {
+		low = lower_bound(RHS.begin(), RHS.end(), LHS[i]) - RHS.begin();
+        high =upper_bound(RHS.begin(), RHS.end(), LHS[i]) - RHS.begin();
+        count += (high - low);
 	}
 	printf("%d\n", count);
 	return 0;

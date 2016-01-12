@@ -8,6 +8,5 @@ map<string, int> m;
 
 int main()
 {
-	int  a = 2147483648;
-	cout<<a;
+	cout<<2 % 0;
 }
