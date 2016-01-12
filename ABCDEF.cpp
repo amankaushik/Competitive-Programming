@@ -57,7 +57,6 @@ typedef long int 					li;
 void printMap(unordered_map<int, int> &valMap) {
 	for(auto &kv: valMap)
 		cout<<kv.first<<" -> "<<kv.second<<"\n";
-		//cout<<kv.first<<" : "<<kv.second.a<<" "<<kv.second.b<<" "<<kv.second.c<<" "<<kv.second.d<<" "<<kv.second.e<<" "<<kv.second.f<<"\n";
 }
 int main(){
 	freopen( "input.in", "r", stdin );
@@ -68,10 +67,7 @@ int main(){
 	f(i, N)
 		s(elements[i]);
 	sort(elements + 0, elements + N);
-	//int valVector[1100000] = {0};
 	unordered_map<int ,int> valMap;
-	unordered_multimap<int ,int> valMMap;
-	//int len = 0;
 	f(i, N) {
 		f(j, N) {
 			f(k, N) {
@@ -86,25 +82,20 @@ int main(){
 	int RHS {0};
 	int count {0};
 	for(auto &kv: valMap) {
-		if(kv.first != 2)
-			continue;
+		int subCount = 0;
 		f(i, N) {
 			if(elements[i]) {
 				f(j, N) {
 					if(kv.first % elements[i] == 0){
 						RHS = kv.first / elements[i];
 						RHS -=  elements[j];
-						if(binary_search(elements + 0, elements + N, RHS)) {
-							//cout<<"binary_search true\n";
-							//cout<<"I: "<<i<<" J: "<<j<<"\n";
-							//cout<<"D: "<<elements[i]<<" E: "<<elements[j]<<" F: "<<RHS<<"\n";
-							count +=                                           
-							count++;
-						}
+						if(binary_search(elements + 0, elements + N, RHS))
+							subCount++;
 					}
 				}	
 			}
 		}
+		count += subCount * kv.second;
 	}
 	printf("%d\n", count);
 	return 0;
