@@ -24,7 +24,7 @@
 #define cco(n, m)					cout<<n<<" : "<<m<<"\n";					
 #define co(n)						cout<<n<<"\n"
 #define ss(n)                       scanf("%s",n)
-#define sl(n)                       scanf("%lld",&n)
+#define sl(n)                       scanf("%ld",&n)
 #define sf(n)                       scanf("%lf",&n)
 #define s(n) 						scanf("%d", &n)
 #define p(n)						printf("%d",n)

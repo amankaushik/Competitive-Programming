@@ -8,5 +8,6 @@ map<string, int> m;
 
 int main()
 {
-	cout<<2 % 0;
+	long int a = 100000000011;
+	cout<<a;
 }
