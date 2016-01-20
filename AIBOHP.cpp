@@ -8,6 +8,7 @@
 #include <cmath>
 #include <map>
 #include <cstdint>
+#include <cstring>
 #include <bitset>
 
 #define gcd 						__gcd
@@ -48,8 +49,36 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+char input[6101];
+static int dp[6110][6101];
+int getPCSLen(char *A, int len) {
+	for(int i = 0; i < len; i++)
+		dp[i][i] = 1;
+	int j;
+	for(int k = 2; k <= len; k++) {
+		for (int i = 0; i < len - k + 1; i++)
+		{
+			j = i + k - 1;
+			if (A[i] == A[j] && k == 2)
+				dp[i][j] = 2;
+			else if (A[i] == A[j])
+				dp[i][j] = dp[i + 1][j - 1] + 2;
+			else
+				dp[i][j] = max(dp[i][j - 1], dp[i + 1][j]);
+		}
+	}
+	return dp[0][len - 1];
+}
 int main(){
 	freopen( "aux/input.in", "r", stdin );
 	freopen( "aux/output.out", "w", stdout );
+	int test;
+	s(test);
+	w(test) {
+		scanf("%s", input);
+		int len = strlen(input);
+		p(len - getPCSLen(input, len));
+		emptyLine;
+	}
 	return 0;
 }

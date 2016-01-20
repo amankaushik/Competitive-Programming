@@ -9,6 +9,7 @@
 #include <map>
 #include <cstdint>
 #include <bitset>
+#include <cstring>
 
 #define gcd 						__gcd
 #define rbit						__builtin_ffs // returns 1 + index of least significant 1-bit of x
@@ -48,8 +49,42 @@ typedef vector<int>					vi;
 typedef long long 					ll;
 typedef long int 					li;
 
+int dp[2101][2101];
+char A[2101];
+char B[2101];
+int getEditDisLen(char *A, char *B, int lenA, int lenB) {
+	for(int i = 0; i <= lenA; i++) {
+		for(int j = 0; j <= lenB; j++) {
+			if(i == 0)
+				dp[i][j] = j;
+			else if(j == 0)
+				dp[i][j] = i;
+			else if(A[i - 1] == B[j - 1])
+				dp[i][j] = dp[i - 1][j - 1];
+			else
+				dp[i][j] = 1 + miN(miN(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]);
+		}
+	}
+	return dp[lenA][lenB];
+}
+
 int main(){
 	freopen( "aux/input.in", "r", stdin );
 	freopen( "aux/output.out", "w", stdout );
+	int test;
+	s(test);
+	w(test) {
+		scanf("%s", A);
+		scanf("%s", B);
+		int lenA = strlen(A);
+		int lenB = strlen(B);
+		
+		if (lenA > 0 && A[lenA - 1] == '\n')
+  			A[lenA - 1] = '\0';
+		if (lenB > 0 && B[lenB - 1] == '\n')
+  			B[lenB - 1] = '\0';
+  		p(getEditDisLen(A, B, lenA, lenB));
+		emptyLine;
+	}
 	return 0;
 }
