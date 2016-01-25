@@ -79,7 +79,7 @@ int calcCubeMat(long long **grid, int N, int sK) {
 				else
 					cubeSum += dp[j][k];
 			if(isPerfectCube(cubeSum)) {
-				if(i - k == sK - 1)
+				if(i - j == sK - 1)
 					count++;
 			}
 			cubeSum = 0;
